@@ -1,11 +1,20 @@
 public class ChocolateBoiler {
     private boolean empty;
     private boolean boiled;
+    private static ChocolateBoiler single_instance = null; 
 
-    public ChocolateBoiler() {
+    private ChocolateBoiler() {
         empty = true;
         boiled = false;
     }
+
+    public static ChocolateBoiler getInstance() 
+    { 
+        if (single_instance == null) 
+            single_instance = new ChocolateBoiler(); 
+  
+        return single_instance; 
+    } 
 
     public void fill(){
         if(isEmpty()){
