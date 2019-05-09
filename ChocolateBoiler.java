@@ -10,10 +10,14 @@ public class ChocolateBoiler {
 
     public static ChocolateBoiler getInstance() 
     { 
-        if (single_instance == null) 
-        {
-            synchronized(ChocolateBoiler.class){
-            single_instance = new ChocolateBoiler(); 
+        if (single_instance == null) {
+            synchronized(ChocolateBoiler.class) {      
+                ChocolateBoiler inst = single_instance;         
+                if (inst == null) {
+                    synchronized(ChocolateBoiler.class) {  
+                        single_instance= new ChocolateBoiler();               
+                    }
+                }
             }
         }
         return single_instance; 
